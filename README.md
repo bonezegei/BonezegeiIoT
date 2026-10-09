@@ -1,2 +1,2 @@
 # BonezegeiIoT
-Boenzegei IoT Cloud Library
+Bonezegei IoT Cloud Library
