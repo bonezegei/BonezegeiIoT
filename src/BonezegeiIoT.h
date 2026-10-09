@@ -27,10 +27,9 @@ public:
 
     // Default target: wss://iot.bonezegei.com/api (TLS port 443)
     void begin(const char* secretKey, 
-               //const char* host = "iot.bonezegei.com", 
-               const char* host = "192.168.254.139",
+               const char* host = "iot.bonezegei.com", 
                uint16_t port = 443, 
-               const char* path = "/api");
+               const char* path = "/api/device");
 
     void handle();
 
