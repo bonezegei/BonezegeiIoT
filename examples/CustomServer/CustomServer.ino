@@ -38,10 +38,10 @@ void setup() {
     Serial.println("\nWiFi Connected!");
 
     // Bind variables with optional callbacks
-    boneIoT.addProperty("relayState", relayState, onRelayStateChange);
-    boneIoT.addProperty("thresholdValue", thresholdValue, onThresholdChange);
-    boneIoT.addProperty("sensorTemp", sensorTemp);
-    boneIoT.addProperty("deviceStatus", deviceStatus);
+    boneIoT.addProperty(relayState, onRelayStateChange);
+    boneIoT.addProperty(thresholdValue, onThresholdChange);
+    boneIoT.addProperty(sensorTemp);
+    boneIoT.addProperty(deviceStatus);
 
     // Modify this based on your server configuration
     boneIoT.begin(secretKey, "192.168.254.139", 443, "/api/device");
@@ -59,7 +59,7 @@ void loop() {
         sensorTemp += 0.25;
         deviceStatus = "Online";
 
-        boneIoT.syncProperty("sensorTemp");
-        boneIoT.syncProperty("deviceStatus");
+        boneIoT.syncProperty(sensorTemp);
+        boneIoT.syncProperty(deviceStatus);
     }
 }

@@ -1,3 +1,4 @@
+#define BONEZEGEI_IOT_CPP
 #include "BonezegeiIoT.h"
 
 BonezegeiIoT::BonezegeiIoT() {}
@@ -26,12 +27,6 @@ void BonezegeiIoT::handle() {
     if (_client.available()) {
         _processFrame();
     }
-
-    // Ping keepalive every 30s
-    //if (millis() - _lastPingSent > 30000) {
-    //    _lastPingSent = millis();
-    //    _sendPing();
-    //}
 }
 
 bool BonezegeiIoT::isConnected() {
