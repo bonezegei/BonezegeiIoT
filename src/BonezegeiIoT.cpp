@@ -74,6 +74,44 @@ void BonezegeiIoT::syncProperty(const String& name) {
     _sendFrame(0x01, (const uint8_t*)payload.c_str(), payload.length());
 }
 
+void BonezegeiIoT::syncAll() {
+    if (!isConnected() || _properties.empty()) return;
+
+    String payload = "{";
+    bool first = true;
+
+    for (auto const& item : _properties) {
+        if (!first) {
+            payload += ",";
+        }
+        first = false;
+
+        String name = item.first;
+        RegisteredProperty prop = item.second;
+
+        payload += "\"" + name + "\":";
+
+        switch (prop.type) {
+            case TYPE_BOOL:
+                payload += (*(static_cast<bool*>(prop.varPtr)) ? "true" : "false");
+                break;
+            case TYPE_INT:
+                payload += String(*(static_cast<int*>(prop.varPtr)));
+                break;
+            case TYPE_FLOAT:
+                payload += String(*(static_cast<float*>(prop.varPtr)), 4);
+                break;
+            case TYPE_STRING:
+                payload += "\"" + *(static_cast<String*>(prop.varPtr)) + "\"";
+                break;
+        }
+    }
+    payload += "}";
+
+    _sendFrame(0x01, (const uint8_t*)payload.c_str(), payload.length());
+}
+
+
 bool BonezegeiIoT::_connect() {
     Serial.print("[BonezegeiIoT] Connecting to ");
     Serial.print(_host);
