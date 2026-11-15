@@ -113,7 +113,7 @@ bool BonezegeiIoT::_connect() {
 
     if (isHandshakeOk) {
         _connected = true;
-        Serial.println("[BonezegeiIoT] Connected to wss://iot.bonezegei.com/api");
+        Serial.println("[BonezegeiIoT] Connected and handshake successful!");
         return true;
     } else {
         Serial.println("[BonezegeiIoT] Handshake failed!");
