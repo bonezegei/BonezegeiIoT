@@ -61,5 +61,6 @@ void loop() {
 
         boneIoT.syncProperty(sensorTemp);
         boneIoT.syncProperty(deviceStatus);
+        // boneIoT.syncAll(); // to sync all properties
     }
 }

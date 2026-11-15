@@ -41,7 +41,7 @@ public:
 
     // --- Core Sync Property ---
     void syncProperty(const String& name);
-
+    void syncAll();
     // --- Auto-Stringification Helpers ---
     
     // Modern 1-arg or 2-arg call: boneIoT.addProperty(deviceStatus) / boneIoT.addProperty(deviceStatus, callback)
